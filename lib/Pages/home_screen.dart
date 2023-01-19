@@ -3,6 +3,7 @@ import 'package:group5finalproject/Pages/add_edit_page.dart';
 import 'package:group5finalproject/Pages/details_page.dart';
 import 'package:group5finalproject/Pages/profile_page.dart';
 import 'package:group5finalproject/Pages/profileedit_page.dart';
+import 'package:group5finalproject/model/myday.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool isLoading = true;
-  List items = <dynamic>[];
+  List items = [];
+
+  MydayInfo info = MydayInfo(
+      title: '',
+      description: '');
 
   @override
   void initState() {
@@ -74,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: (){
                         Navigator.push(
                             context, MaterialPageRoute(
-                            builder: (context)=> const ProfileEditPage()),
+                            builder: (context)=> DetailsPage(details: items[index])),
                         );
 
                       }
@@ -121,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final response = await http.get(uri);
 
     if (response.statusCode == 200) {
-      final json = jsonDecode(response.body) as Map;
+      Map<String, dynamic> json = jsonDecode(response.body);
       final result = json['items'] as List;
       setState(() {
         items = result;

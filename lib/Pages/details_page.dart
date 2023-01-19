@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:group5finalproject/Pages/home_screen.dart';
+import 'package:group5finalproject/model/myday.dart';
 
 class DetailsPage extends StatelessWidget{
-  final HomeScreen details;
+  final MydayInfo details;
 
   const DetailsPage ({ required this.details,
     Key? key}): super(key:key);
@@ -19,16 +19,16 @@ class DetailsPage extends StatelessWidget{
         children: <Widget>[
           ListTile(
               leading: const Icon(Icons.code),
-              title: Row(
+              title: Column(
                 children: [
                   const Expanded (
                     flex: 3,
                     child: Text('ID number'),
                   ),
-                  // Expanded (
-                  //   flex: 7,
-                  //   child: Text(': ${details.description}'),
-                  // ),
+                  Expanded (
+                    flex: 7,
+                    child: Text(': ${details.description}'),
+                  ),
                 ],
               )
           ),
