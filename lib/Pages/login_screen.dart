@@ -102,14 +102,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                       height: 30,
                                     ),
                                     RoundedButton(
-                                      btnText: 'Login',
+                                      buttonText: 'Login',
                                       onButtonPressed: () => loginPressed(),
                                     ),
                                     const SizedBox(
                                       height: 30,
                                     ),
                                     RoundedButton(
-                                      btnText: 'Register',
+                                      buttonText: 'Register',
                                       onButtonPressed: () => registerRoute(),
                                     )
                                   ],

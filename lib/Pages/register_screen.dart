@@ -112,7 +112,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   height: 40,
                                 ),
                                 RoundedButton(
-                                  btnText: 'Create Account',
+                                  buttonText: 'Create Account',
                                   onButtonPressed: () => createAccountPressed(),
                                 ),
                                 const SizedBox(
