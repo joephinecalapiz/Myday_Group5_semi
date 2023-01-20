@@ -19,9 +19,10 @@ class _HomeScreenState extends State<HomeScreen> {
   bool isLoading = true;
   List items = [];
 
-  // MydayInfo info = MydayInfo(
-  //     title: '',
-  //     description: '');
+  MydayInfo info = MydayInfo(
+      title: '',
+      description: ''
+  );
 
   @override
   void initState() {
@@ -78,12 +79,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           ];
                         },
                       ),
-                      onTap: ()=> DetailsPage(details: item[index])),
+                      onTap: (){
+                        Navigator.push(
+                            context, MaterialPageRoute(
+                            builder: (context)=> DetailsPage(details: info)),
                         );
 
+                      }
+                    )
 
-
-
+                    );
                 }
             )
         ),

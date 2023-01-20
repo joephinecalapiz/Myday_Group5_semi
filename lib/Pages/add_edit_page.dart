@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 class AddEditPage extends StatefulWidget {
   final Map? todo;
-  AddEditPage({ super.key, this.todo
+  const AddEditPage({ super.key, this.todo
   });
 
   @override
