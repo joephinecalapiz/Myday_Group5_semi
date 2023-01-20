@@ -3,8 +3,9 @@ import 'package:group5finalproject/model/myday.dart';
 
 class DetailsPage extends StatelessWidget{
   final MydayInfo details;
+  final List<String> titles = <String>['Title', 'Description'];
 
-  const DetailsPage ({ required this.details,
+  DetailsPage ({ required this.details,
     Key? key}): super(key:key);
 
   @override
@@ -13,28 +14,28 @@ class DetailsPage extends StatelessWidget{
       appBar: AppBar(
         title: const Text('Details Page'),
       ),
-      body: ListView(
-        padding: const EdgeInsets.only(left:2),
-        shrinkWrap: true,
-        children: <Widget>[
-          ListTile(
-              leading: const Icon(Icons.code),
-              title: Column(
-                children: [
-                  const Expanded (
-                    flex: 3,
-                    child: Text('ID number'),
-                  ),
-                  Expanded (
-                    flex: 7,
-                    child: Text(': ${details.description}'),
-                  ),
-                ],
-              )
-          ),
-          const SizedBox(height: 34),
-        ],
-      ),
+      // body: ListView(
+      //   padding: const EdgeInsets.only(left:2),
+      //   shrinkWrap: true,
+      //   children: <Widget>[
+      //     ListTile(
+      //         leading: const Icon(Icons.code),
+      //         title: Column(
+      //           children: [
+      //             const Expanded (
+      //               flex: 3,
+      //               child: Text('ID number'),
+      //             ),
+      //             Expanded (
+      //               flex: 7,
+      //               child: Text(': ${details.description}'),
+      //             ),
+      //           ],
+      //         )
+      //     ),
+      //     const SizedBox(height: 34),
+      //   ],
+      // ),
     );
 
   }

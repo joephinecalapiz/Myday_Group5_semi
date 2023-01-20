@@ -19,9 +19,9 @@ class _HomeScreenState extends State<HomeScreen> {
   bool isLoading = true;
   List items = [];
 
-  MydayInfo info = MydayInfo(
-      title: '',
-      description: '');
+  // MydayInfo info = MydayInfo(
+  //     title: '',
+  //     description: '');
 
   @override
   void initState() {
@@ -43,9 +43,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemBuilder: (context, index) {
                   final item = items[index] as Map;
                   final id = item ['_id'] as String;
-                  return
-                    ListTile(
-                      minVerticalPadding: 23,
+                  return Container(
+                      padding: const EdgeInsets.all(10),
+                      margin: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(color: Colors.blueAccent.shade100),
+                    child: ListTile(
                       leading: CircleAvatar(
                           child: Text('${index + 1}')),
                       title: Text(item['title'],
@@ -76,15 +78,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           ];
                         },
                       ),
-                      onTap: (){
-                        Navigator.push(
-                            context, MaterialPageRoute(
-                            builder: (context)=> DetailsPage(details: items[index])),
+                      onTap: ()=> DetailsPage(details: item[index])),
                         );
 
-                      }
 
-                    );
+
+
                 }
             )
         ),
@@ -126,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final response = await http.get(uri);
 
     if (response.statusCode == 200) {
-      Map<String, dynamic> json = jsonDecode(response.body);
+      final json = jsonDecode(response.body) as Map;
       final result = json['items'] as List;
       setState(() {
         items = result;

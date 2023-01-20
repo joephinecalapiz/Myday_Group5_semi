@@ -1,8 +1,8 @@
 
 class MydayInfo {
   int? id;
-  final String title;
-  final String description;
+  String? title;
+  String? description;
 
 
   MydayInfo({
