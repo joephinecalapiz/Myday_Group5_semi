@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
-
 import 'package:group5finalproject/Pages/login_screen.dart';
-import 'package:group5finalproject/Pages/profileedit_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -165,11 +163,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                                     0 * size),
                                                 child: TextButton(
                                                   onPressed: () {
-                                                    Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                            const ProfileEditPage()));
+                                                    Navigator.pop(
+                                                        context);
                                                   },
                                                   style: TextButton.styleFrom(
                                                     padding: EdgeInsets.zero,
