@@ -49,8 +49,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       final id = items[index]['_id'] as String;
                       return
                         Container(
-                            padding: const EdgeInsets.all(5),
-                            margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
+                            padding: const EdgeInsets.all(10),
+                            margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
                             decoration: const BoxDecoration(color: Color.fromARGB(90, 50, 40, 100)),
                             child: Column(
                                 children: [
@@ -167,13 +167,22 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  void showErrorMessage(String message) {
-    final snackBar = SnackBar(content: Text(message));
+  void showSuccessMessage(String message){
+    final snackBar = SnackBar(
+        content: Text(message,
+            style: const TextStyle(
+                color: Colors.green)
+        )
+    );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
-
-  void showSuccessMessage(String message){
-    final snackBar = SnackBar(content: Text(message));
+  void showErrorMessage(String message){
+    final snackBar = SnackBar(
+        content: Text(message,
+            style: const TextStyle(
+                color: Colors.redAccent)
+        )
+    );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

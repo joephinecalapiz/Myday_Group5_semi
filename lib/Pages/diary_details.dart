@@ -27,19 +27,13 @@ class _DetailsPageState extends State<DetailsPage> {
     fetchTodo();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-          leading: InkWell(
-            onTap: () { /* Write listener code here */ },
-            child: const Icon(
-              Icons.menu,  // add custom icons also
-            ),
-          ),
-        title: const Text("MY DIARY'S PAGE"),
+        title: const Text("My Diary"),
+
           actionsIconTheme: const IconThemeData(
               size: 30.0,
               opacity: 10.0
@@ -49,12 +43,10 @@ class _DetailsPageState extends State<DetailsPage> {
                 padding: const EdgeInsets.only(right: 10.0),
                 child: InkWell(
                   onTap: () {
+                    Navigator.pop (context);
                     navigateToEditPage;
 
-                    // Navigator.push(
-                    //   context, MaterialPageRoute(
-                    //     builder: (context)=> const AddEditPage()),
-                    // );
+
                   },
                   child: const Icon(
                     Icons.edit_rounded,
@@ -75,29 +67,35 @@ class _DetailsPageState extends State<DetailsPage> {
                   ),
                 )
             )
-
-
           ]
       ),
       body:
       ListView(
         padding: const EdgeInsets.only(top: 5),
         children: [
-          rowItem("Title", widget.todo['title']),
-          rowItem("Description", widget.todo["description"])
+          columnTitle("Title", widget.todo['title'],),
+          columnDescription("Description", widget.todo["description"])
         ],
       ),
 
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: (){},
-          label: const Text('Edit Diary'),
-        ),
+    );
+  }
+  Widget columnTitle(String title, dynamic value) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
 
-
+      children: [
+        const SizedBox(height: 30),
+        Text(value.toString(), style: const TextStyle(
+          fontSize: 40,
+          fontWeight: FontWeight.bold,
+        ),),
+      ],
 
     );
   }
-  Widget rowItem(String title, dynamic value) {
+  Widget columnDescription(String description, dynamic value) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -106,8 +104,8 @@ class _DetailsPageState extends State<DetailsPage> {
         const SizedBox(height: 50),
         Text(value.toString(), style: const TextStyle(
           fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),)
+          //fontWeight: FontWeight.bold,
+        ),),
       ],
 
     );
@@ -161,11 +159,21 @@ class _DetailsPageState extends State<DetailsPage> {
 
   }
   void showSuccessMessage(String message){
-    final snackBar = SnackBar(content: Text(message));
+    final snackBar = SnackBar(
+        content: Text(message,
+            style: const TextStyle(
+                color: Colors.green)
+        )
+    );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
   void showErrorMessage(String message){
-    final snackBar = SnackBar(content: Text(message));
+    final snackBar = SnackBar(
+        content: Text(message,
+            style: const TextStyle(
+                color: Colors.redAccent)
+        )
+    );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
