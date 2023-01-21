@@ -34,38 +34,48 @@ class _AddEditPageState extends State<AddEditPage> {
 
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-            isEdit? 'Edit MY DAY':'ADD MY DAY'),
+            isEdit? 'EDIT MY DAY':'ADD MY DAY'),
+
       ),
-      body: ListView(
-          padding: const EdgeInsets.all(20),
-          children: [
-            TextField(
+      body: Form(
+        key: formKey,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        child: ListView(
+            padding: const EdgeInsets.all(20),
+            children: [
+            TextFormField(
               controller: titleController,
               keyboardType: TextInputType.datetime,
               decoration: const InputDecoration(
                   hintText: '01-21-2022',
                   labelText: 'Date Today'
               ),
+              validator: (value) {
+                return (value == '') ? 'Required Date' : null;
+              },
 
             ),
             const SizedBox(height: 20),
-            TextField(
+            TextFormField(
               controller: descriptionController,
               decoration: const InputDecoration(
                 labelText: 'Start your day',
               ),
               keyboardType: TextInputType.multiline,
-              minLines: 50,
-              maxLines: 100,
+              minLines: 29,
+              maxLines: 50,
+
+
 
             ),
+
+
 
             const SizedBox(height: 20),
             ElevatedButton(
@@ -80,6 +90,7 @@ class _AddEditPageState extends State<AddEditPage> {
 
           ]
       ),
+      )
 
     );
   }
@@ -146,10 +157,10 @@ class _AddEditPageState extends State<AddEditPage> {
       titleController.text = '';
       descriptionController.text = '';
 
-      showSuccessMessage('Creation success');
+      showSuccessMessage('Create successfully');
 
     }else{
-      showErrorMessage('Creation unsuccessful');
+      showErrorMessage('Unable to create');
 
     }
 

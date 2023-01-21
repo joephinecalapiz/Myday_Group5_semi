@@ -19,7 +19,10 @@ class _ProfilePageState extends State<ProfilePage> {
     double baseWidth = 360;
     double size = MediaQuery.of(context).size.width / baseWidth;
     double sizes = size * 0.97;
-    return SizedBox(
+    return Scaffold(
+    body: Expanded(
+
+      child: SizedBox(
       width: double.infinity,
       child: SizedBox(
         width: double.infinity,
@@ -339,6 +342,8 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
         ),
       ),
+    )
+    )
     );
   }
 }
